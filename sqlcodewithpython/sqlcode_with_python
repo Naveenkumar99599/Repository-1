@@ -1,0 +1,29 @@
+import pyodbc
+DRIVER_NAME='SQL SERVER'
+SERVER_NAME='NAVEENKUMAR'
+DATABASE_NAME='DB7am"'
+TableName="EMP"
+uid="SA"
+pwd="Naveen@123"
+
+# Establish a connection
+conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
+                      'SERVER=NAVEENKUMAR;'  # replace with your server name
+                      'DATABASE=DB7am;'  # replace with your database name
+                      'UID=SA;'  # replace with your username
+                      'PWD=Naveen@123')  # replace with your password
+
+cursor = conn.cursor()
+
+# Execute a query
+cursor.execute('SELECT * FROM EMP')  # replace with your table name
+
+# Fetch all rows from the last executed statement
+rows = cursor.fetchall()
+
+# Print the rows
+for row in rows:
+    print(row)
+
+# Close the connection
+conn.close()
